@@ -57,7 +57,7 @@ const Modal = () => {
         });
         navigate(from, { replace: true });
       })
-      .cath((error) => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   return (

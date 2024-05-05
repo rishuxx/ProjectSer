@@ -4,6 +4,7 @@ const cors = require("cors");
 const port = process.env.PORT || 6001;
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const verifyToken = require("../backend/api/middleware/verifyToken");
 require("dotenv").config();
 
 // middleware
@@ -37,9 +38,9 @@ const userRoutes = require("./api/routes/userRoutes");
 
 app.use("/menu", menuRoutes);
 app.use("/carts", cartRoutes);
-app.use("/user", userRoutes);
+app.use("/users", userRoutes);
 
-app.get("/", (req, res) => {
+app.get("/", verifyToken, (req, res) => {
   res.send("Hey Serventica Hope u will shine one day!");
 });
 

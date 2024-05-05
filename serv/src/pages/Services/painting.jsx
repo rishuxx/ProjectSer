@@ -43,10 +43,10 @@ const Painting = () => {
       {/* Upper Line and Text */}
       <div>
         <div className="flex flex-col items-center">
-          <hr class=" my-14  border-t-1 border-gray-300 w-[1680px]" />
+          <hr className=" my-14  border-t-1 border-gray-300 w-[1680px]" />
         </div>
         {/* upper texts */}
-        <h3 class="absolute text-2xl font-semibold text-gray-600 mt-1 ml-36">
+        <h3 className="absolute text-2xl font-semibold text-gray-600 mt-1 ml-36">
           Painting Services
         </h3>
       </div>
@@ -63,15 +63,15 @@ const Painting = () => {
       {/* bottom Line and Text */}
       <div>
         <div className="flex flex-col items-center">
-          <hr class=" my-20  border-t-1 border-gray-300 w-[1680px]" />
+          <hr className=" my-20  border-t-1 border-gray-300 w-[1680px]" />
         </div>
         <div className="mb-10 ml-36 max-w-4xl">
-          <h3 class="text-2xl font-semibold text-gray-600 ">
+          <h3 className="text-2xl font-semibold text-gray-600 ">
             Full House Painting and Waterproofing
           </h3>
 
           <div className=" ml-9 mb-96">
-            <h3 class="text-xl mt-7  font-semibold text-gray-500 ">
+            <h3 className="text-xl mt-7  font-semibold text-gray-500 ">
               At Home Consultation
             </h3>
             <p className="text-gray-600 ml-9 mt-5  text-md font-medium leading-relaxed">

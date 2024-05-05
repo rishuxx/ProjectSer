@@ -4,16 +4,14 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import "../App.css";
 import Modal from "./Modal";
-import { AuthContext } from "../contexts/AuthProvider";
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
   const [isSticky, setSticky] = useState(false);
-
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const { user } = useAuth();
   const [cart, refetch] = useCart();
 
   // handle scroll fnc
@@ -141,7 +139,12 @@ const Navbar = () => {
             </ul>
           </div>
           <a href="/">
-            <img src={logo} alt="" className="w-36 ml-12" />
+            <img
+              src={logo}
+              alt="Logo for Company"
+              className="w-36 ml-12"
+              loading="lazy"
+            />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -156,16 +159,16 @@ const Navbar = () => {
               transition={{ duration: 0.2, ease: "easeInOut" }}
             >
               <div
-                tabindex="0"
+                tabIndex="0"
                 role="button"
-                class="btn btn-ghost btn-circle mr-8 lg:flex  hidden items-center justify-center"
+                className="btn btn-ghost btn-circle mr-8 lg:flex  hidden items-center justify-center"
               >
-                <div class="indicator">
+                <div className="indicator">
                   <Icon
                     icon="solar:cart-check-outline"
                     className="size-8 text-white cursor-pointer hover:text-yellow-500 duration-100 transition-all ease-in-out"
                   />
-                  <span class="badge badge-sm bg-yellow border-none indicator-item">
+                  <span className="badge badge-sm bg-yellow border-none indicator-item">
                     {cart.length}
                   </span>
                 </div>

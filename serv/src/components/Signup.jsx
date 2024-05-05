@@ -7,6 +7,8 @@ import backgroundImage from "../assets/signup.jpg";
 
 import Modal from "./Modal";
 import { AuthContext } from "../contexts/AuthProvider";
+import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Signup = () => {
   const {
@@ -16,7 +18,9 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  const { createUser, login } = useContext(AuthContext);
+  const { signUpWithGmail, createUser, updateUserProfile } =
+    useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
 
   //redirecting to homepage or specific page
   const location = useLocation();
@@ -30,9 +34,19 @@ const Signup = () => {
       .then((result) => {
         // Signed up
         const user = result.user;
-        alert("Account Created Successfully !");
-        document.getElementById("my_modal_5").close();
-        navigate(from, { replace: true });
+        updateUserProfile(data.email, data.photoURL).then(() => {
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((response) => {
+            // console.log(response);
+            alert("Account Created Successfully !");
+            document.getElementById("my_modal_5").close();
+            navigate(from, { replace: true });
+          });
+        });
+
         // ...
       })
       .catch((error) => {
@@ -40,6 +54,21 @@ const Signup = () => {
         const errorMessage = error.message;
         // ..
       });
+  };
+
+  //login with google
+  const handleRegister = () => {
+    signUpWithGmail().then((result) => {
+      const user = result.user;
+      const userInfo = {
+        email: result.user?.email,
+        name: result.user?.displayName,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        navigate("/");
+      });
+    });
   };
 
   return (
@@ -71,21 +100,21 @@ const Signup = () => {
         <div className="modal-action flex flex-col justify-center mt-0">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             {/* Name */}
-            <div className="form-control" method="dialog">
+            <div className="form-control">
               <label className="label">
-                <span className="label-text text-white">Name</span>
+                <span className="label-text text-white text-lg ">Name</span>
               </label>
               <input
-                type="Name"
-                placeholder="Name"
+                type="name"
+                placeholder="Your name"
                 className="input text-black"
-                {...register("Name")}
+                {...register("name")}
               />
             </div>
             {/* email */}
             <div className="form-control" method="dialog">
               <label className="label">
-                <span className="label-text text-white">Email</span>
+                <span className="label-text text-white text-lg">Email</span>
               </label>
               <input
                 type="email"
@@ -98,7 +127,7 @@ const Signup = () => {
             {/* password */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-white">Password</span>
+                <span className="label-text text-white text-lg">Password</span>
               </label>
               <input
                 type="password"
@@ -109,7 +138,7 @@ const Signup = () => {
               <label className="label mt-1">
                 <a
                   href="#"
-                  className="label-text-alt link link-hover text-white"
+                  className="label-text-alt link link-hover text-red-500"
                 >
                   Forgot password?
                 </a>
@@ -117,6 +146,9 @@ const Signup = () => {
             </div>
 
             {/* error txt */}
+            <p>{errors.message}</p>
+
+            {/* submit btn */}
 
             {/* login btn */}
             <div className="form-control mt-6">
@@ -126,22 +158,23 @@ const Signup = () => {
                 className="btn bg-yellow border-none"
               />
             </div>
-            <p className="text-center mt-5 font-normal text-sm">
-              Have an account?{" "}
-              <button
-                className="underline text-green-700 ml-1 "
-                onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
-                }
-              >
-                Login Now
-              </button>
-            </p>
+
+            <div className="text-center my-2">
+              Have an account?
+              <Link to="/login">
+                <button className="ml-2 underline text-green-500">
+                  Login here
+                </button>
+              </Link>
+            </div>
           </form>
 
           {/* social signin */}
           <div className="text-center space-x-3 mb-4">
-            <button className="btn btn-circle hover:bg-yellow border-0">
+            <button
+              onClick={handleRegister}
+              className="btn btn-circle hover:bg-yellow border-0"
+            >
               <FaGoogle />
             </button>
             <button className="btn btn-circle hover:bg-yellow border-0">

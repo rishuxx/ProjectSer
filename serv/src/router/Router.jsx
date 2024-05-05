@@ -12,6 +12,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import Privaterouter from "../PrivateRouter/Private";
 import Dashboard from "../pages/dashboard/admin/Dashboard";
 import Users from "../pages/dashboard/admin/Users";
+import Login from "../components/Login";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +58,10 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <Signup />,
   },
-
+  {
+    path: "/login",
+    element: <Login />,
+  },
   {
     path: "dashboard",
     element: (

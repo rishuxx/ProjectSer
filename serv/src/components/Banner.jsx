@@ -55,7 +55,7 @@ const HomeContainer = () => {
               <input
                 className="peer h-full w-full outline-none text-lg text-gray-700 pr-2"
                 type="text"
-                id="search"
+                id="searchb"
                 placeholder="Search for Services"
               />
             </div>

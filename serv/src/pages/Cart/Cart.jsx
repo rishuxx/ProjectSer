@@ -225,7 +225,7 @@ const Cart = () => {
       {/* user detail */}
 
       <div className="flex flex-col items-center">
-        <hr class=" my-8  border-t-1 border-gray-300 w-[1680px]" />
+        <hr className=" my-8  border-t-1 border-gray-300 w-[1680px]" />
       </div>
 
       <div className="my-1 flex justify-between items-end">
