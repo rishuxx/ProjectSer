@@ -46,5 +46,54 @@
         "category": "Painting",
         "rating": "4.7",
         "price": 199
+    },
+    {
+        "title": "Switch & Socket",
+        "des": "Starting from ₹49 (15+ amp)",
+        "image": "/images/Electrician/socket.jpg",
+        "category": "Electrician",
+        "rating": "4.2",
+        "price": 239
+    },
+     {
+        "title": "Fan",
+        "des": "Starting from ₹89",
+        "image": "/images/Electrician/fan.jpg",
+        "category": "Electrician",
+        "rating": "3.8",
+        "price": 89
+    },
+     {
+        "title": "Light",
+        "des": "Starting from ₹129",
+        "image": "/images/Electrician/light.jpg",
+        "category": "Electrician",
+        "rating": "3.8",
+        "price": 129
+    },
+    {
+        "title": "Wiring",
+        "des": "Starting from ₹89(per 5m)",
+        "image": "/images/Electrician/wiring.jpg",
+        "category": "Electrician",
+        "rating": "3.8",
+        "price": 129
+    },
+    {
+        "title": "MCB and Fuse",
+        "des": "Starting from ₹80",
+        "image": "/images/Electrician/mcb.jpg",
+        "category": "Electrician",
+        "rating": "3.8",
+        "price":129
+    },
+     {
+        "title": "Battery and Inverter",
+        "des": "Starting from ₹199",
+        "image": "/images/Electrician/battery.jpg",
+        "category": "Electrician",
+        "rating": "3.8",
+        "price":129
     }
+
 ]

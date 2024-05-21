@@ -37,8 +37,8 @@ const Cart = () => {
         });
 
         setCartItems(updatedCart);
+        refetch();
       });
-    refetch();
   };
 
   //handleDecrease
@@ -65,8 +65,8 @@ const Cart = () => {
             return cartItem;
           });
           setCartItems(updatedCart);
+          refetch();
         });
-      refetch();
     } else {
       let timerInterval;
       Swal.fire({

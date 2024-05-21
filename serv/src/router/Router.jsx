@@ -13,6 +13,7 @@ import Privaterouter from "../PrivateRouter/Private";
 import Dashboard from "../pages/dashboard/admin/Dashboard";
 import Users from "../pages/dashboard/admin/Users";
 import Login from "../components/Login";
+import AddMenu from "../pages/dashboard/admin/AddMenu";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "add-menu",
+        element: <AddMenu />,
       },
     ],
   },

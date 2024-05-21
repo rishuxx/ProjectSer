@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import panda from "../assets/panda.png";
 import { AuthContext } from "../contexts/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { CgProfile, CgNotes } from "react-icons/cg";
+import { IoSettingsOutline } from "react-icons/io5";
+import { MdLogout, MdOutlineDashboard } from "react-icons/md";
+
 import Swal from "sweetalert2";
 
 const Profile = ({ user }) => {
@@ -52,20 +56,36 @@ const Profile = ({ user }) => {
           <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             <li>
-              <a href="/update-profile">Profile</a>
+              <a href="/update-profile" className="text-md">
+                <CgProfile className="text-xl" />
+                Profile
+              </a>
             </li>
             <li>
-              <a href="/order">Orders</a>
+              <a href="/order" className="text-md">
+                <CgNotes className="text-xl" />
+                Orders
+              </a>
             </li>
 
             <li>
-              <a>Settings</a>
+              <a className="text-md">
+                {" "}
+                <IoSettingsOutline className="text-xl" />
+                Settings
+              </a>
             </li>
             <li>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/dashboard" className="text-md">
+                <MdOutlineDashboard className="text-xl" />
+                Dashboard
+              </Link>
             </li>
-            <li>
-              <button onClick={handleLogout}>LogOut</button>
+            <li className="text-md">
+              <button onClick={handleLogout}>
+                <MdLogout className="text-xl" />
+                LogOut
+              </button>
             </li>
           </ul>
         </div>

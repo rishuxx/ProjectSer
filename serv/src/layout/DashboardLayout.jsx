@@ -110,7 +110,7 @@ const DashboardLayout = () => {
               </li>
 
               <li>
-                <Link to="/dashboard">
+                <Link to="/dashboard/add-menu">
                   {" "}
                   <FaPlusCircle />
                   Add Menu
