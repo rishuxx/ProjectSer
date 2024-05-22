@@ -4,7 +4,7 @@ import india from "../assets/india.png";
 import heroImage from "../assets/hero1img.png";
 
 const HomeContainer = () => {
-  const locations = ["Allahabad", "Delhi NCR", "Lucknow", "Banglore"];
+  const locations = ["Prayagraj", "Delhi NCR", "Lucknow", "Banglore"];
 
   return (
     <div className="relative w-full h-[771px]">
