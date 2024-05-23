@@ -1,13 +1,18 @@
 import React from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-const AddMenu = () => {
+const UpdateMenu = () => {
+  const item = useLoaderData();
+  console.log(item);
+
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   // image hosting key
 
@@ -36,7 +41,7 @@ const AddMenu = () => {
       };
       // console.log(menuItem);
 
-      const postMenuItem = axiosSecure.post("/menu", menuItem);
+      const postMenuItem = axiosSecure.patch(`/menu/${item._id}`, menuItem);
       console.log(postMenuItem);
       if (postMenuItem) {
         // show success popup
@@ -44,10 +49,11 @@ const AddMenu = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: `${data.title} is added to the menu.`,
+          title: `${data.title} is updated to Successfully.`,
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate("/dashboard/manage-items");
       }
     }
   };
@@ -55,7 +61,7 @@ const AddMenu = () => {
   return (
     <div className="w-full md:w-[870px] px-4 mx-auto">
       <h2 className="text-2xl font-semibold my-4 ">
-        Add a New <span className="text-red-500">Item</span>{" "}
+        Update This <span className="text-red-500">Item</span>{" "}
       </h2>
 
       {/* form input */}
@@ -69,9 +75,10 @@ const AddMenu = () => {
               </label>
               <input
                 type="text"
+                defaultValue={item.title}
                 {...register("title", { required: true })}
                 placeholder="Product Name"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-gray-500"
               />
             </div>
 
@@ -103,8 +110,8 @@ const AddMenu = () => {
               </label>
               <select
                 {...register("category", { required: true })}
-                className="select select-bordered"
-                defaultValue="default"
+                className="select select-bordered text-gray-500"
+                defaultValue={item.category}
               >
                 <option disabled value="default">
                   Select a Category
@@ -122,9 +129,10 @@ const AddMenu = () => {
               </label>
               <input
                 type="number"
+                defaultValue={item.price}
                 {...register("price", { required: true })}
                 placeholder="Price"
-                className="input input-bordered w-full "
+                className="input input-bordered w-full text-gray-500 "
               />
             </div>
           </div>
@@ -135,8 +143,9 @@ const AddMenu = () => {
               <span className="label-text">Description</span>
             </label>
             <textarea
+              defaultValue={item.des}
               {...register("des", { required: true })}
-              className="textarea textarea-bordered h-24"
+              className="textarea textarea-bordered h-24 text-gray-500"
               placeholder="Description"
             ></textarea>
           </div>
@@ -163,4 +172,4 @@ const AddMenu = () => {
   );
 };
 
-export default AddMenu;
+export default UpdateMenu;
