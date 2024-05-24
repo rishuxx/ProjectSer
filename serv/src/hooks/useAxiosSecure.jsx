@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; // Corrected import statement
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
@@ -10,10 +10,10 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
-  // request interceptor to add authorization header for every secure call to teh api
+  // request interceptor to add authorization header for every secure call to the API
   axiosSecure.interceptors.request.use(
     function (config) {
-      const token = localStorage.getItem("acessToken");
+      const token = localStorage.getItem("accessToken");
       // console.log('request stopped by interceptors', token)
       config.headers.authorization = `Bearer ${token}`;
       return config;

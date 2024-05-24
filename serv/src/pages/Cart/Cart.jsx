@@ -3,6 +3,7 @@ import useCart from "../../hooks/useCart";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -132,18 +133,9 @@ const Cart = () => {
 
   return (
     <div>
-      <div className="relative bg-red-500 h-24 w-screen">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-      </div>
-
-      <div className="max-w-screen-2xl  ml-28 xl:px-24 px-1 ">
-        <div className="py-28 flex flex-col md:flex-row justify-between items-center gap-96">
-          <div className="md:flex-grow">
-            <p className="text-red-600 font-bold text-2xl md:w-1/2">
-              Cart Items
-            </p>
-          </div>
-        </div>
+      <div className="relative bg-red-500 h-24 w-full" />
+      <div className="max-w-7xl px-32 py-11 flex flex-col md:flex-row items-center md:justify-between gap-4 md:gap-0">
+        <p className="text-red-600 font-bold text-xl md:w-1/2">Cart Items</p>
       </div>
 
       {/* table cart */}
@@ -241,9 +233,11 @@ const Cart = () => {
           <h3 className="font-semibold">Shopping Details</h3>
           <p className="font-medium btn">Total Item : {cart.length}</p>
           <p className="font-medium btn">Total Price : ₹ {orderTotal}</p>
-          <button className="btn bg-red-500 text-white font-normal">
-            Checkout
-          </button>
+          <Link to="/process-checkout">
+            <button className="btn bg-red-500 text-white font-normal">
+              Checkout
+            </button>
+          </Link>
         </div>
       </div>
     </div>

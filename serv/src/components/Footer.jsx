@@ -1,11 +1,15 @@
 import React from "react";
-import hero from "../assets/Footer.png";
+import heroImg from "../assets/Footer.png";
 
 const Footer = () => {
   return (
-    <div className="relative w-full -mt-1">
-      <div className="w-[1920px] h-[723px]">
-        <img src={hero} alt="Hero Image" className="w-full" />
+    <div className="relative">
+      <div className="w-full h-auto">
+        <img
+          src={heroImg}
+          alt="Footer Image"
+          className="w-full h-auto object-cover"
+        />
       </div>
     </div>
   );
