@@ -33,7 +33,7 @@ const Order = () => {
     <div>
       <div className="relative bg-red-500 h-24 w-full" />
       <div className="max-w-7xl px-32 py-11 flex flex-col md:flex-row items-center md:justify-between gap-4 md:gap-0">
-        <p className="text-red-600 font-bold text-xl md:w-1/2">Cart Items</p>
+        <p className="text-red-600 font-bold text-xl md:w-1/2">Order Summary</p>
       </div>
 
       {/* table content */}
@@ -80,9 +80,12 @@ const Order = () => {
           </div>
         ) : (
           <div className="text-center mt-20">
-            <p>Cart is empty. Please add products.</p>
+            <p className="text-2xl font-normal">
+              No Orders <span className="text-red-500">Placed</span> Yet
+            </p>
+
             <Link to="/">
-              <button className="btn bg-green text-white mt-3">
+              <button className="btn bg-green-500 text-white mt-3">
                 Back to Home
               </button>
             </Link>
