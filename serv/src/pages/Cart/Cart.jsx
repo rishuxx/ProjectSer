@@ -3,6 +3,7 @@ import useCart from "../../hooks/useCart";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -132,120 +133,126 @@ const Cart = () => {
 
   return (
     <div>
-      <div className="relative bg-red-500 h-24 w-screen">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-      </div>
-
-      <div className="max-w-screen-2xl  ml-28 xl:px-24 px-1 ">
-        <div className="py-28 flex flex-col md:flex-row justify-between items-center gap-96">
-          <div className="md:flex-grow">
-            <p className="text-red-600 font-bold text-2xl md:w-1/2">
-              Cart Items
-            </p>
-          </div>
-        </div>
+      <div className="relative bg-red-500 h-24 w-full" />
+      <div className="max-w-7xl px-32 py-11 flex flex-col md:flex-row items-center md:justify-between gap-4 md:gap-0">
+        <p className="text-red-600 font-bold text-xl md:w-1/2">Cart Items</p>
       </div>
 
       {/* table cart */}
-
-      <div className="mx-32">
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead className="bg-red-500 text-white ">
-              <tr>
-                <th>#</th>
-                <th>Service</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* row 1 */}
-              {cart.map((item, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-32">
-                          <img src={item.image} alt="" />
-                        </div>
-                      </div>
-                      {/* <div>
+      {cart.length > 0 ? (
+        <div>
+          <div className="mx-32">
+            <div className="overflow-x-auto">
+              <table className="table">
+                {/* head */}
+                <thead className="bg-red-500 text-white ">
+                  <tr>
+                    <th>#</th>
+                    <th>Service</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* row 1 */}
+                  {cart.map((item, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <div className="flex items-center gap-3">
+                          <div className="avatar">
+                            <div className="mask mask-squircle w-32">
+                              <img src={item.image} alt="" />
+                            </div>
+                          </div>
+                          {/* <div>
                         <div className="font-bold">{item.title}</div>
                         <div className="text-sm opacity-50">United States</div>
                       </div> */}
-                    </div>
-                  </td>
-                  <td>
-                    <div className="font-semibold">{item.title}</div>
-                  </td>
-                  <td>
-                    <button
-                      className="font-semibold btn btn-ghost btn-sm"
-                      onClick={() => handleDecrease(item)}
-                    >
-                      -
-                    </button>
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      className="w-10 mx-2 text-center overflow-hidden appearance-none"
-                    ></input>
-                    <button
-                      className="font-semibold btn btn-ghost btn-sm"
-                      onClick={() => handleIncrease(item)}
-                    >
-                      +
-                    </button>
-                  </td>
-                  <th>
-                    <button className="btn btn-ghost btn-sm">
-                      ₹ {calculatePrice(item).toFixed(2)}
-                    </button>
-                  </th>
-                  <th>
-                    <button
-                      className="btn btn-ghost btn-sm text-red-500"
-                      onClick={() => handleDelete(item)}
-                    >
-                      <FaTrash />
-                    </button>
-                  </th>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="font-semibold">{item.title}</div>
+                      </td>
+                      <td>
+                        <button
+                          className="font-semibold btn btn-ghost btn-sm"
+                          onClick={() => handleDecrease(item)}
+                        >
+                          -
+                        </button>
+                        <input
+                          type="number"
+                          value={item.quantity}
+                          className="w-10 mx-2 text-center overflow-hidden appearance-none"
+                        ></input>
+                        <button
+                          className="font-semibold btn btn-ghost btn-sm"
+                          onClick={() => handleIncrease(item)}
+                        >
+                          +
+                        </button>
+                      </td>
+                      <th>
+                        <button className="btn btn-ghost btn-sm">
+                          ₹ {calculatePrice(item).toFixed(2)}
+                        </button>
+                      </th>
+                      <th>
+                        <button
+                          className="btn btn-ghost btn-sm text-red-500"
+                          onClick={() => handleDelete(item)}
+                        >
+                          <FaTrash />
+                        </button>
+                      </th>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
 
-      {/* user detail */}
+          {/* user detail */}
 
-      <div className="flex flex-col items-center">
-        <hr className=" my-8  border-t-1 border-gray-300 w-[1680px]" />
-      </div>
+          <div className="flex flex-col items-center">
+            <hr className=" my-8  border-t-1 border-gray-300 w-[1680px]" />
+          </div>
 
-      <div className="my-1 flex justify-between items-end">
-        <div className="flex mb-10 ml-40 items-center space-x-4">
-          <h3 className="font-semibold">Customer Details</h3>
-          <p className="font-medium btn">
-            Name : {user?.displayName || "Null"}
-          </p>
-          <p className="font-medium btn">Email : {user?.email || "no email"}</p>
-          {/* Add customer details elements here */}
+          <div className="my-1 flex justify-between items-end">
+            <div className="flex mb-10 ml-40 items-center space-x-4">
+              <h3 className="font-semibold">Customer Details</h3>
+              <p className="font-medium btn">
+                Name : {user?.displayName || "Null"}
+              </p>
+              <p className="font-medium btn">
+                Email : {user?.email || "no email"}
+              </p>
+            </div>
+            <div className="flex mb-10 mr-52 items-center space-x-4">
+              <h3 className="font-semibold">Shopping Details</h3>
+              <p className="font-medium btn">Total Item : {cart.length}</p>
+              <p className="font-medium btn">Total Price : ₹ {orderTotal}</p>
+              <Link to="/process-checkout">
+                <button className="btn bg-red-500 text-white font-normal">
+                  Checkout
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex mb-10 mr-52 items-center space-x-4">
-          <h3 className="font-semibold">Shopping Details</h3>
-          <p className="font-medium btn">Total Item : {cart.length}</p>
-          <p className="font-medium btn">Total Price : ₹ {orderTotal}</p>
-          <button className="btn bg-red-500 text-white font-normal">
-            Checkout
-          </button>
+      ) : (
+        <div className="text-center mt-20">
+          <p>Cart is empty. Please add products.</p>
+          <Link to="/">
+            <button className="btn bg-green text-white mt-3">
+              Back to Home
+            </button>
+          </Link>
         </div>
-      </div>
+      )}
     </div>
   );
 };
