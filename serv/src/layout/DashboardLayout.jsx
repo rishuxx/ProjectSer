@@ -102,7 +102,7 @@ const DashboardLayout = () => {
               </li>
 
               <li>
-                <Link to="/dashboard">
+                <Link to="/dashboard/bookings">
                   {" "}
                   <FaShoppingBag />
                   Manage Booking

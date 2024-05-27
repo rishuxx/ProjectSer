@@ -40,5 +40,38 @@ router.get("/", verifyToken, async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 });
+// get all payment infomation
+// get all menu items
+router.get("/all", async (req, res) => {
+  try {
+    const menus = await Payment.find({}).sort({ createdAt: -1 });
+    res.status(200).json(menus);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// confirm payment status
+router.patch("/:id", verifyToken, async (req, res) => {
+  const payId = req.params.id;
+  const { status } = req.body;
+  try {
+    const updatedStatus = await Payment.findByIdAndUpdate(
+      payId,
+      { status: "confirmed" },
+      { new: true, runValidators: true }
+    );
+
+    // console.log(updatedUser)
+
+    if (!updatedStatus) {
+      return res.status(404).json({ message: "Pay Id not found" });
+    }
+
+    res.status(200).json(updatedStatus);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 module.exports = router;

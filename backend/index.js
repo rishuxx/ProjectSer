@@ -4,9 +4,8 @@ const cors = require("cors");
 const port = process.env.PORT || 6001;
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const verifyToken = require("../backend/api/middleware/verifyToken");
+const verifyToken = require("./api/middleware/verifyToken");
 require("dotenv").config();
-
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 // middleware
@@ -38,12 +37,15 @@ const menuRoutes = require("./api/routes/menuRoutes");
 const cartRoutes = require("./api/routes/cartRoutes");
 const userRoutes = require("./api/routes/userRoutes");
 const paymentRoutes = require("./api/routes/paymentRoutes");
+const adminStats = require("./api/routes/adminStats");
+const orderStats = require("./api/routes/orderStats");
 
 app.use("/menu", menuRoutes);
 app.use("/carts", cartRoutes);
 app.use("/users", userRoutes);
 app.use("/payments", paymentRoutes);
-
+app.use("/admin-stats", adminStats);
+app.use("/order-stats", orderStats);
 // stripe payment gateway
 
 app.post("/create-payment-intent", async (req, res) => {
@@ -53,7 +55,7 @@ app.post("/create-payment-intent", async (req, res) => {
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amount,
-    currency: "usd",
+    currency: "inr",
     payment_method_types: ["card"],
   });
 
