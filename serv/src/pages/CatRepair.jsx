@@ -8,23 +8,28 @@ import fan from "../assets/fan.png";
 import washing from "../assets/washing.png";
 import ac from "../assets/ac.png";
 import ro from "../assets/ro.png";
+import { Link } from "react-router-dom";
 
 const serviceItem = [
-  { id: 7, title: "TV Repair", image: tv },
-  { id: 8, title: "Cooler/Fan Repair", image: fan },
-  { id: 9, title: "Washing Machine", image: washing },
-  { id: 10, title: "AC Repair", image: ac },
-  { id: 11, title: "RO Repair", image: ro },
+  { id: 7, title: "TV Repair", image: tv, link: "tv-repair" },
+  { id: 8, title: "Cooler/Fan Repair", image: fan, link: "fan-repair" },
+  { id: 9, title: "Washing Machine", image: washing, link: "wm-repair" },
+  { id: 10, title: "AC Repair", image: ac, link: "ac-repair" },
+  { id: 11, title: "RO Repair", image: ro, link: "ro-repair" },
 ];
 
 const Cards = ({ item }) => {
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full hover:-translate-y-1 duration-400 transition-all">
       <div>
-        <img src={item.image} alt="" className="w-16 p-2" />
+        <Link to={`/${item.link}`}>
+          <img src={item.image} alt="" className="w-16 p-2" />
+        </Link>
       </div>
       <div className="mt-1 space-y-8">
-        <h1>{item.title}</h1>
+        <Link to={`/${item.link}`}>
+          <h1>{item.title}</h1>
+        </Link>
       </div>
     </div>
   );

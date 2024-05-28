@@ -19,6 +19,11 @@ import UpdateMenu from "../pages/dashboard/admin/UpdateMenu";
 import Payment from "../pages/menuPage/Payment";
 import Order from "../pages/dashboard/Order";
 import ManageBookings from "../pages/dashboard/admin/ManageBookings";
+import AcRepair from "../pages/Repair/AcRepair";
+import FanRepair from "../pages/Repair/FanRepair";
+import RoRepair from "../pages/Repair/RoRepair";
+import TvRepair from "../pages/Repair/TvRepair";
+import WmRepair from "../pages/Repair/WmRepair";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +58,29 @@ const router = createBrowserRouter([
         element: <Cleaning />,
       },
 
+      {
+        path: "/ac-repair",
+        element: <AcRepair />,
+      },
+
+      {
+        path: "fan-repair",
+        element: <FanRepair />,
+      },
+
+      {
+        path: "ro-repair",
+        element: <RoRepair />,
+      },
+      {
+        path: "tv-repair",
+        element: <TvRepair />,
+      },
+
+      {
+        path: "wm-repair",
+        element: <WmRepair />,
+      },
       {
         path: "/cart",
         element: <Cart />,

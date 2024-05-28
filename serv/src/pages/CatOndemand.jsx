@@ -7,6 +7,7 @@ import makeup from "../assets/makeup.png";
 import mens from "../assets/mens.png";
 import menpower from "../assets/menpower.png";
 import decors from "../assets/decors.png";
+import { Link } from "react-router-dom";
 
 const serviceItem = [
   { id: 12, title: "Woman's Salon", image: makeup },
@@ -19,10 +20,12 @@ const Cards = ({ item }) => {
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full hover:-translate-y-1 duration-400 transition-all">
       <div>
-        <img src={item.image} alt="" className="w-16 p-2" />
+        <Link to={`/${item.title.toLowerCase()}`}>
+          <img src={item.image} alt={item.title} className="w-16 p-2" />
+        </Link>
       </div>
       <div className="mt-1 space-y-8">
-        <h1>{item.title}</h1>
+        <Link to={`/${item.title.toLowerCase()}`}>{item.title}</Link>
       </div>
     </div>
   );

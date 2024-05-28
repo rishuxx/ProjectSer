@@ -44,7 +44,7 @@ const Navbar = () => {
           <summary>SERVICES</summary>
           <ul className="p-1  text-gray-600">
             <li>
-              <a href="/painting">Painting</a>
+              <a href="painting">Painting</a>
             </li>
             <li>
               <a href="electrician">Electrician</a>
@@ -61,22 +61,22 @@ const Navbar = () => {
 
       <li className="lg:text-white  font-semibold mr-4">
         <details>
-          <summary>REAPIR</summary>
+          <summary>REPAIR</summary>
           <ul className="p-1 text-gray-600">
             <li>
-              <a>AC Reapir</a>
+              <a href="ac-repair">AC Repair</a>
             </li>
             <li>
-              <a>TV Reapir</a>
+              <a href="tv-repair">TV repair</a>
             </li>
             <li>
-              <a>R.O</a>
+              <a href="ro-repair">R.O</a>
             </li>
             <li>
-              <a>Cooler/Fan</a>
+              <a href="fan-repair">Cooler/Fan</a>
             </li>
             <li>
-              <a>Washing Machine </a>
+              <a href="wm-repair">Washing Machine </a>
             </li>
           </ul>
         </details>
