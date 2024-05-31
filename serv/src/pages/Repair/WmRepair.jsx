@@ -1,64 +1,56 @@
-import React from "react";
-import styled from "styled-components";
-import washingMachine from "../../assets/washing.jpg";
+import AddressForm from "../../location/AddressForm";
+import Map from "../../location/Maps";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { useState } from "react";
 
-const Container = styled.div`
-  position: relative;
-  text-align: center;
-`;
+const WmRepair = () => {
+  const styles = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    backgroundColor: "black",
+    color: "white",
+  };
 
-const Image = styled.img`
-  width: 100%;
-  height: auto;
-`;
+  const [address, setAddress] = useState({
+    streetAndNumber: "",
+    place: "",
+    region: "",
+    postcode: "",
+    country: "",
+    latitude: "",
+    longitude: "",
+  });
 
-const TextContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 1rem;
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
 
-  @media (max-width: 768px) {
-    width: 80%;
-  }
-`;
+    if (address.streetAndNumber) {
+      console.log("Selected address:", address);
+    }
+  };
 
-const Heading = styled.h2`
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px #000000;
+  const updateCoordinates = (latitude, longitude) => {
+    setAddress({ ...address, latitude, longitude });
+  };
 
-  @media (max-width: 768px) {
-    font-size: 20px;
-  }
-`;
-
-const Paragraph = styled.p`
-  color: white;
-  font-size: 18px;
-  text-shadow: 1px 1px 2px #000000;
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-`;
-
-const PlumbingServices = () => {
   return (
-    <Container>
-      <Image src={washingMachine} alt="Plumbing" />
-      <TextContainer>
-        <Heading>Expert Plumbing Services</Heading>
-        <Paragraph>
-          Our team of skilled plumbers offers comprehensive plumbing services
-          for residential and commercial properties.
-        </Paragraph>
-      </TextContainer>
-    </Container>
+    <div style={styles}>
+      <AddressForm
+        onSubmit={handleFormSubmit}
+        address={address}
+        setAddress={setAddress}
+      />
+      {address.longitude && address.latitude && (
+        <Map
+          longitude={address.longitude}
+          latitude={address.latitude}
+          updateCoordinates={updateCoordinates}
+        />
+      )}
+    </div>
   );
 };
 
-export default PlumbingServices;
+export default WmRepair;
