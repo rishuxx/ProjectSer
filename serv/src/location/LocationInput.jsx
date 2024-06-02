@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import getPlaces from "../API/getPlaces"; // Assuming getPlaces is in ../API/getPlaces
-
+import { MdGpsFixed } from "react-icons/md";
+import "../styles/LocationInput.css";
 const LocationInput = ({ onLocationChange }) => {
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const inputRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     // Get the user's location when the component mounts
@@ -77,34 +79,37 @@ const LocationInput = ({ onLocationChange }) => {
   };
 
   return (
-    <div>
+    <div ref={containerRef} className=" z- relative flex items-center">
+      <button
+        onClick={getUserLocation}
+        className="btn bg-red-500 rounded-2xl px-4 py-3 text-white w-16 h-16 text-xl mr-1 border-none"
+      >
+        <MdGpsFixed />
+      </button>
       <input
         type="text"
         placeholder="Enter an address or location"
         value={address}
         onChange={handleInputChange}
         ref={inputRef}
-        className="text-black"
+        className="text-gray-500 rounded-2xl px-4 py-2 border-none focus:outline-none w-72 h-[70px] text-lg flex-grow"
       />
       {suggestions.length > 0 && (
-        <ul>
+        <ul
+          className="rounded-lg bg-white mt-2 shadow-lg absolute top-full left-0 right-0 z-10 max-h-60 overflow-y-auto suggestion-list"
+          style={{ maxHeight: "170px" }}
+        >
           {suggestions.map((suggestion) => (
             <li
               key={suggestion.id}
               onClick={() => handleSuggestionClick(suggestion)}
-              className="cursor-pointer"
+              className="px-4 py-2 cursor-pointer hover:bg-gray-100 text-gray-500 text-lg"
             >
               {suggestion.place_name}
             </li>
           ))}
         </ul>
       )}
-      <button
-        onClick={getUserLocation}
-        className="btn btn-ghost btn-xl bg-red-500 ml-10"
-      >
-        Get Location
-      </button>
     </div>
   );
 };

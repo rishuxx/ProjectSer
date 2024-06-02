@@ -18,7 +18,6 @@ const RoRepair = () => {
   return (
     <div style={styles}>
       <div>
-        <h1>My Page</h1>
         <LocationInput onLocationChange={handleLocationChange} />
         {/* Rest of your page content */}
       </div>
