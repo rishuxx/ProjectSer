@@ -1,5 +1,5 @@
 .suggestion-list::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
     border-radius: 6px;
     /* Increase the width of the scroll bar */
 }

@@ -9,11 +9,6 @@ const LocationInput = ({ onLocationChange }) => {
   const inputRef = useRef(null);
   const containerRef = useRef(null);
 
-  useEffect(() => {
-    // Get the user's location when the component mounts
-    getUserLocation();
-  }, []);
-
   const getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -82,17 +77,17 @@ const LocationInput = ({ onLocationChange }) => {
     <div ref={containerRef} className=" z- relative flex items-center">
       <button
         onClick={getUserLocation}
-        className="btn bg-red-500 rounded-2xl px-4 py-3 text-white w-16 h-16 text-xl mr-1 border-none"
+        className="btn bg-red-600 rounded-2xl px-4 py-3 text-white w-16 h-16 text-xl mr-1 border-none"
       >
         <MdGpsFixed />
       </button>
       <input
         type="text"
-        placeholder="Enter an address or location"
+        placeholder="Search for address or location"
         value={address}
         onChange={handleInputChange}
         ref={inputRef}
-        className="text-gray-500 rounded-2xl px-4 py-2 border-none focus:outline-none w-72 h-[70px] text-lg flex-grow"
+        className="text-gray-500 rounded-2xl px-4 py-2 border-none focus:outline-none w-72 h-[65px] text-lg flex-grow"
       />
       {suggestions.length > 0 && (
         <ul

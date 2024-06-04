@@ -1,52 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import india from "../assets/india.png";
-import heroImage from "../assets/hero1img.png";
+import heroImage from "../assets/cons.jpg";
+import heroImage2 from "../assets/decors2.jpg";
+import heroImage3 from "../assets/repairCar.jpg";
+import heroImage4 from "../assets/haircut.jpg";
+import heroImage5 from "../assets/washing2.jpg";
 import LocationInput from "../location/LocationInput";
 
 const HomeContainer = () => {
-  const locations = ["Prayagraj", "Delhi NCR", "Lucknow", "Banglore"];
+  const [currentImage, setCurrentImage] = useState(0);
+  const heroImages = [
+    heroImage,
+    heroImage2,
+    heroImage3,
+    heroImage4,
+    heroImage5,
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   return (
-    <div className="relative w-full h-[771px]">
-      {/* Hero Image */}
-      <div className="absolute top-0 left-0 w-[1920px] h-[771px]">
+    <div className="relative">
+      <div className="h-[760px]">
         <img
-          src={heroImage}
-          alt="Hero Image"
-          className="w-full h-full object-cover"
+          src={heroImages[currentImage]}
+          alt="Hero"
+          className="w-full h-full object-cover brightness-50"
         />
       </div>
 
-      {/* Text Section */}
-      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3 z-10 text-white text-center">
-        <h1 className="md:text-5xl text-2xl font-bold md:leading-snug leading-snug">
-          "Elevate Your <span className="text-yellow">Home</span> with Expert
-          Care <span className="text-yellow font-extrabold">.</span>"
-        </h1>
-      </div>
-
-      <div className="z-10 relative w-screen p-96 px-14 md:p-28 md:px-24">
-        <div className="md:flex w-full justify-between items-center">
-          <div className="w-72 m-56 translate-x-[700px]">
-            {/* SearchBar */}
-            <div className="relative flex items-center w-full translate-y-[65px] h-[70px] rounded-2xl focus-within:shadow-2xl bg-white overflow-hidden">
-              <div className="grid place-items-center text-2xl h-full w-20 text-gray-500">
-                <IoSearch />
-              </div>
-              <input
-                className="peer h-full w-full outline-none text-lg text-gray-700 pr-2"
-                type="text"
-                id="search"
-                placeholder="Search for Services"
-              />
-            </div>
-          </div>
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center gap-24">
+        {/* Heading */}
+        <div>
+          <h1 className="text-2xl md:text-5xl font-bold md:leading-snug leading-snug">
+            "Elevate Your <span className="text-yellow">Home</span> with Expert
+            Care <span className="text-yellow font-extrabold">.</span>"
+          </h1>
+          <p className="mt-4 text-lg md:text-xl font-medium">
+            Unlock a world of convenience and quality services, right at your
+            doorstep.
+          </p>
         </div>
 
-        {/* LocationFetch Bar*/}
-        <div className=" m-40 translate-y-[-385px] translate-x-[300px] flex items-center">
-          <LocationInput />
+        <div className="mt-8 md:flex items-center md:flex-row-reverse gap-14">
+          <div className="relative flex items-center w-72 h-16 rounded-2xl bg-white overflow-hidden">
+            <div className="grid place-items-center h-full w-16 text-2xl text-gray-500">
+              <IoSearch />
+            </div>
+            <input
+              className="peer h-full w-full outline-none text-lg text-gray-700 pr-2"
+              type="text"
+              id="search"
+              placeholder="Search for Services"
+            />
+          </div>
+
+          <div className="mt-4 md:mt-0 md:mr-4">
+            <LocationInput />
+          </div>
         </div>
       </div>
     </div>
