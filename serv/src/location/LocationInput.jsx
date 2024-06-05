@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import getPlaces from "../API/getPlaces"; // Assuming getPlaces is in ../API/getPlaces
 import { MdGpsFixed } from "react-icons/md";
 import "../styles/LocationInput.css";
+
 const LocationInput = ({ onLocationChange }) => {
   const [location, setLocation] = useState(null);
   const [address, setAddress] = useState("");
@@ -37,7 +38,10 @@ const LocationInput = ({ onLocationChange }) => {
       if (data.features.length > 0) {
         const { place_name } = data.features[0];
         setAddress(place_name);
-        onLocationChange({ latitude, longitude, address: place_name });
+        // Check if onLocationChange is a function before calling it
+        if (typeof onLocationChange === "function") {
+          onLocationChange({ latitude, longitude, address: place_name });
+        }
       } else {
         console.error("Unable to reverse geocode coordinates");
       }
@@ -70,24 +74,27 @@ const LocationInput = ({ onLocationChange }) => {
     setLocation({ latitude, longitude });
     setSuggestions([]);
     inputRef.current.blur();
-    onLocationChange({ latitude, longitude, address: suggestion.place_name });
+    // Check if onLocationChange is a function before calling it
+    if (typeof onLocationChange === "function") {
+      onLocationChange({ latitude, longitude, address: suggestion.place_name });
+    }
   };
 
   return (
     <div ref={containerRef} className=" z- relative flex items-center">
       <button
         onClick={getUserLocation}
-        className="btn bg-red-600 rounded-2xl px-4 py-3 text-white w-16 h-16 text-xl mr-1 border-none"
+        className="btn bg-red-600 rounded-2xl px-4 py-3 text-white w-16 h-[55px] md:h-[65px] text-xl mr-1 border-none"
       >
         <MdGpsFixed />
       </button>
       <input
         type="text"
-        placeholder="Search for address or location"
+        placeholder=" Your Location or Address"
         value={address}
         onChange={handleInputChange}
         ref={inputRef}
-        className="text-gray-500 rounded-2xl px-4 py-2 border-none focus:outline-none w-72 h-[65px] text-lg flex-grow"
+        className="text-gray-500 rounded-2xl px-4 py-2 border-none focus:outline-none w-56 md:w-72 h-[55px] md:h-[65px] text-lg flex-grow"
       />
       {suggestions.length > 0 && (
         <ul

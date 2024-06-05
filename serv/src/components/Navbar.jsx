@@ -43,26 +43,26 @@ const Navbar = () => {
       <li className="font-semibold lg:text-white mb-4   border-b ">
         <details>
           <summary className="flex items-center">SERVICES</summary>
-          <ul className="pl-4 text-gray-600">
-            <li className="flex items-center">
+          <ul className="pl-4 text-gray-600 my-5">
+            <li className="flex items-center my-3">
               <Icon icon="tabler:paint" className="mr-2  text-2xl lg:hidden" />
               <a href="painting">Painting</a>
             </li>
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon
                 icon="ic:baseline-bolt"
                 className="mr-2  text-2xl lg:hidden"
               />
               <a href="electrician">Electrician</a>
             </li>
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon
                 icon="ic:baseline-plumbing"
                 className="mr-2  text-2xl lg:hidden"
               />
               <a href="plumbing">Plumbing</a>
             </li>
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon
                 icon="ic:baseline-cleaning-services"
                 className="mr-2  text-2xl lg:hidden"
@@ -73,36 +73,36 @@ const Navbar = () => {
         </details>
       </li>
 
-      <li className="font-semibold mb-4 lg:text-white border-b">
+      <li className="font-semibold mb-4 lg:text-white border-b ">
         <details>
           <summary className="flex items-center">REPAIR</summary>
-          <ul className="pl-4 text-gray-600">
-            <li className="flex items-center">
+          <ul className="pl-4 text-gray-600 my-5">
+            <li className="flex items-center my-3">
               <Icon
                 icon="ic:baseline-air"
                 className="mr-2 text-2xl lg:hidden"
               />
               <a href="ac-repair">AC Repair</a>
             </li>
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon icon="ic:baseline-tv" className="mr-2 text-2xl lg:hidden" />
               <a href="tv-repair">TV repair</a>
             </li>
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon
                 icon="ic:baseline-water-drop"
                 className="mr-2 text-2xl lg:hidden"
               />
               <a href="ro-repair">R.O</a>
             </li>
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon
                 icon="ic:baseline-wind-power"
                 className="mr-2 text-2xl lg:hidden"
               />
               <a href="fan-repair">Cooler/Fan</a>
             </li>
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon
                 icon="ic:baseline-local-laundry-service"
                 className="mr-2 text-2xl lg:hidden"
@@ -116,8 +116,8 @@ const Navbar = () => {
       <li className="font-semibold mb-4 lg:text-white border-b">
         <details>
           <summary className="flex items-center">ONDEMAND</summary>
-          <ul className="pl-4 text-gray-600 ">
-            <li className="flex items-center">
+          <ul className="pl-4 text-gray-600 my-5">
+            <li className="flex items-center my-3">
               <Icon
                 icon="map:beauty-salon"
                 className="mr-2  text-2xl lg:hidden"
@@ -125,7 +125,7 @@ const Navbar = () => {
               <a>Salon</a>
             </li>
 
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon
                 icon="mdi:string-lights"
                 className="mr-2  text-2xl lg:hidden"
@@ -133,12 +133,12 @@ const Navbar = () => {
               <a>Decors</a>
             </li>
 
-            <li className="flex items-center">
+            <li className="flex items-center my-3">
               <Icon
                 icon="ic:baseline-engineering"
                 className="mr-2 text-2xl lg:hidden"
               />
-              <a>Menpower Services</a>
+              <a>Menpower</a>
             </li>
           </ul>
         </details>

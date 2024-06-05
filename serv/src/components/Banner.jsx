@@ -49,7 +49,7 @@ const HomeContainer = () => {
         </div>
 
         <div className="mt-8 flex flex-col-reverse md:flex-row-reverse items-center  gap-2 md:gap-14">
-          <div className="relative flex items-center w-full md:w-72 h-16 rounded-2xl bg-white overflow-hidden">
+          <div className="relative flex items-center w-auto md:w-72 h-[55px] md:h-16 rounded-2xl bg-white overflow-hidden">
             <div className="grid place-items-center h-full w-16 text-2xl text-gray-500">
               <IoSearch />
             </div>

@@ -21,7 +21,7 @@ const Cards = ({ item }) => {
     <div className="relative flex flex-col items-center justify-center w-full h-full hover:-translate-y-1 duration-400 transition-all">
       <div>
         <Link to={`/${item.title.toLowerCase()}`}>
-          <img src={item.image} alt={item.title} className="w-16 p-2" />
+          <img src={item.image} alt={item.title} className="w-12 md:w-16 p-2" />
         </Link>
       </div>
       <div className="mt-1 space-y-8">
