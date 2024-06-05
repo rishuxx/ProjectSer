@@ -55,12 +55,12 @@ const CatOndemand = () => {
     <>
       {/* card section */}
       <div className="sticky z-10">
-        <div className="text-center bg-yellow relative -top-24 left-1/3 translate-x-9 translate-y-1 rounded-lg w-32">
+        <div className="text-center bg-yellow relative -top-24 left-1/3  translate-x-1  lg:translate-x-9 lg:translate-y-1 rounded-lg w-28 lg:w-32">
           <p className=" text-gray-600 tracking-wide font-semibold text-lg">
             OnDemand
           </p>
         </div>
-        <div className="relative flex w-2/6 h-28 -top-36 bg-white m-auto rounded-3xl flex-col sm:flex-row flex-wrap justify-center gap-20 items-center mt-12 font-normal shadow-2xl text-sm">
+        <div className="relative flex  w-80 md:w-2/3  xl:w-2/6 h-20 lg:h-28 -top-36 bg-white m-auto rounded-3xl flex-col sm:flex-row flex-wrap justify-center gap-20 items-center mt-12 font-normal shadow-2xl text-sm">
           <Slider
             {...settings}
             className="relative flex w-full h-full justify-center items-center"
@@ -82,20 +82,25 @@ const HeroSection = () => {
   return (
     <div className="relative w-full -mt-48">
       {" "}
-      <div className="w-[1920px] h-[1080px]">
-        <img src={heroImage} alt="Hero Image" className="w-full" />
+      <div className="h-[calc(100vh-64px)] md:h-[760px]">
+        <img
+          src={heroImage}
+          alt="Hero Image"
+          className="w-full h-full object-cover"
+        />
       </div>
       <div className="absolute top-1/3 ml-28 transform -translate-y-1/2 text-white text-left">
         {" "}
-        <h2 className="md:text-4xl text-xl font-bold md:leading-snug leading-snug">
+        <h2 className="md:text-4xl text-2xl font-bold md:leading-snug leading-snug">
           "Bringing Your
           <br />
-          <span className="text-yellow">Celebration</span> Dreams
+          Celebration Dreams
           <br />
-          to Vibrent Realities <span className="text-yellow text-5xl">.</span>"
+          to Vibrent Realitis <span className="text-yellow text-5xl">.</span>"
         </h2>
         <p className="mt-4 text-base md:text-lg">
-          Decorating your Place for any Special Occassions.
+          Decorating your Place for any Special Occassions just starting from{" "}
+          <span className="text-yellow">₹999.</span>
         </p>
       </div>
     </div>

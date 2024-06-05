@@ -91,8 +91,8 @@ const LocationInput = ({ onLocationChange }) => {
       />
       {suggestions.length > 0 && (
         <ul
-          className="rounded-lg bg-white mt-2 shadow-lg absolute top-full left-0 right-0 z-10 max-h-60 overflow-y-auto suggestion-list"
-          style={{ maxHeight: "170px" }}
+          className="rounded-lg bg-white mt-2 shadow-lg absolute top-full left-0 right-0 z-50 max-h-60 overflow-y-auto suggestion-list"
+          style={{ maxHeight: "150px" }}
         >
           {suggestions.map((suggestion) => (
             <li

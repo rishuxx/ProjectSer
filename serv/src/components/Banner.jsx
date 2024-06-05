@@ -27,7 +27,7 @@ const HomeContainer = () => {
 
   return (
     <div className="relative">
-      <div className="h-[760px]">
+      <div className="h-[calc(100vh-64px)] md:h-[760px]">
         <img
           src={heroImages[currentImage]}
           alt="Hero"
@@ -35,33 +35,33 @@ const HomeContainer = () => {
         />
       </div>
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center gap-24">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center gap-8 md:gap-24 px-4">
         {/* Heading */}
         <div>
           <h1 className="text-2xl md:text-5xl font-bold md:leading-snug leading-snug">
             "Elevate Your <span className="text-yellow">Home</span> with Expert
             Care <span className="text-yellow font-extrabold">.</span>"
           </h1>
-          <p className="mt-4 text-lg md:text-xl font-medium">
+          <p className="mt-4 text-base md:text-xl font-medium">
             Unlock a world of convenience and quality services, right at your
             doorstep.
           </p>
         </div>
 
-        <div className="mt-8 md:flex items-center md:flex-row-reverse gap-14">
-          <div className="relative flex items-center w-72 h-16 rounded-2xl bg-white overflow-hidden">
+        <div className="mt-8 flex flex-col-reverse md:flex-row-reverse items-center  gap-2 md:gap-14">
+          <div className="relative flex items-center w-full md:w-72 h-16 rounded-2xl bg-white overflow-hidden">
             <div className="grid place-items-center h-full w-16 text-2xl text-gray-500">
               <IoSearch />
             </div>
             <input
-              className="peer h-full w-full outline-none text-lg text-gray-700 pr-2"
+              className="peer h-full w-full outline-none text-base md:text-lg text-gray-700 pl-4 pr-2"
               type="text"
               id="search"
               placeholder="Search for Services"
             />
           </div>
 
-          <div className="mt-4 md:mt-0 md:mr-4">
+          <div>
             <LocationInput />
           </div>
         </div>

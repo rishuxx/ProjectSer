@@ -13,13 +13,12 @@ const Navbar = () => {
   const [isSticky, setSticky] = useState(false);
   const { user } = useAuth();
   const [cart, refetch] = useCart();
+  const [showSidebar, setShowSidebar] = useState(false);
 
   // handle scroll fnc
-
   useEffect(() => {
     const handleScroll = () => {
       if (typeof window !== "undefined") {
-        // Check if window is defined
         const offset = window.scrollY;
         if (offset > 0) {
           setSticky(true);
@@ -36,113 +35,144 @@ const Navbar = () => {
 
   const navItems = (
     <>
-      <li className="lg:text-white font-semibold mr-4">
-        <a href="/">HOME</a>
+      <li className="font-semibold mb-4 flex items-center border-b">
+        <a href="/" className="lg:text-white">
+          HOME
+        </a>
       </li>
-      <li tabIndex={0} className="lg:text-white  font-semibold mr-4">
+      <li className="font-semibold lg:text-white mb-4   border-b ">
         <details>
-          <summary>SERVICES</summary>
-          <ul className="p-1  text-gray-600">
-            <li>
+          <summary className="flex items-center">SERVICES</summary>
+          <ul className="pl-4 text-gray-600">
+            <li className="flex items-center">
+              <Icon icon="tabler:paint" className="mr-2  text-2xl lg:hidden" />
               <a href="painting">Painting</a>
             </li>
-            <li>
+            <li className="flex items-center">
+              <Icon
+                icon="ic:baseline-bolt"
+                className="mr-2  text-2xl lg:hidden"
+              />
               <a href="electrician">Electrician</a>
             </li>
-            <li>
+            <li className="flex items-center">
+              <Icon
+                icon="ic:baseline-plumbing"
+                className="mr-2  text-2xl lg:hidden"
+              />
               <a href="plumbing">Plumbing</a>
             </li>
-            <li>
+            <li className="flex items-center">
+              <Icon
+                icon="ic:baseline-cleaning-services"
+                className="mr-2  text-2xl lg:hidden"
+              />
               <a href="cleaning">Cleaning</a>
             </li>
           </ul>
         </details>
       </li>
 
-      <li className="lg:text-white  font-semibold mr-4">
+      <li className="font-semibold mb-4 lg:text-white border-b">
         <details>
-          <summary>REPAIR</summary>
-          <ul className="p-1 text-gray-600">
-            <li>
+          <summary className="flex items-center">REPAIR</summary>
+          <ul className="pl-4 text-gray-600">
+            <li className="flex items-center">
+              <Icon
+                icon="ic:baseline-air"
+                className="mr-2 text-2xl lg:hidden"
+              />
               <a href="ac-repair">AC Repair</a>
             </li>
-            <li>
+            <li className="flex items-center">
+              <Icon icon="ic:baseline-tv" className="mr-2 text-2xl lg:hidden" />
               <a href="tv-repair">TV repair</a>
             </li>
-            <li>
+            <li className="flex items-center">
+              <Icon
+                icon="ic:baseline-water-drop"
+                className="mr-2 text-2xl lg:hidden"
+              />
               <a href="ro-repair">R.O</a>
             </li>
-            <li>
+            <li className="flex items-center">
+              <Icon
+                icon="ic:baseline-wind-power"
+                className="mr-2 text-2xl lg:hidden"
+              />
               <a href="fan-repair">Cooler/Fan</a>
             </li>
-            <li>
+            <li className="flex items-center">
+              <Icon
+                icon="ic:baseline-local-laundry-service"
+                className="mr-2 text-2xl lg:hidden"
+              />
               <a href="wm-repair">Washing Machine </a>
             </li>
           </ul>
         </details>
       </li>
 
-      <li className="lg:text-white  font-semibold mr-4">
+      <li className="font-semibold mb-4 lg:text-white border-b">
         <details>
-          <summary>ONDEMAND</summary>
-          <ul className="p-1  text-gray-600">
-            <li>
+          <summary className="flex items-center">ONDEMAND</summary>
+          <ul className="pl-4 text-gray-600 ">
+            <li className="flex items-center">
+              <Icon
+                icon="map:beauty-salon"
+                className="mr-2  text-2xl lg:hidden"
+              />
               <a>Salon</a>
             </li>
 
-            <li>
+            <li className="flex items-center">
+              <Icon
+                icon="mdi:string-lights"
+                className="mr-2  text-2xl lg:hidden"
+              />
               <a>Decors</a>
             </li>
 
-            <li>
+            <li className="flex items-center">
+              <Icon
+                icon="ic:baseline-engineering"
+                className="mr-2 text-2xl lg:hidden"
+              />
               <a>Menpower Services</a>
             </li>
           </ul>
         </details>
       </li>
 
-      <li className="lg:text-white  font-semibold mr-4">
+      <li className="font-semibold mb-4 flex items-center lg:text-white border-b">
         <a>CONTACT</a>
       </li>
     </>
   );
 
   return (
-    <header className="max-w-[1620px]  container mx-auto pt-4 font-medium fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
+    <header className="max-w-[1620px] container mx-auto pt-4 font-medium fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out z-50">
       <div
         className={`navbar xl:px-1 ${
           isSticky
-            ? "shadow-2xl bg-gray-400/30 backdrop-blur-lg rounded-xl w-full text-white transition-all duration-300 ease-in-out"
+            ? "shadow-2xl bg-gray-900/30 backdrop-blur-lg rounded-xl text-white transition-all duration-300 ease-in-out"
             : ""
         }`}
       >
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </div>
-            <ul className="menu menu-sm dropdown-content mt-3 z-[20] p-2 shadow bg-base-100 rounded-box w-52 font-black absolute top-16 left-0">
-              {navItems}
-            </ul>
+          <div className="lg:hidden">
+            <button
+              onClick={() => setShowSidebar(!showSidebar)}
+              className="btn btn-ghost btn-circle"
+            >
+              <Icon icon="ic:baseline-menu" className="text-2xl" />
+            </button>
           </div>
           <a href="/">
             <img
               src={logo}
               alt="Logo for Company"
-              className="w-36 ml-12"
+              className="w-36 ml-4"
               loading="lazy"
             />
           </a>
@@ -161,12 +191,12 @@ const Navbar = () => {
               <div
                 tabIndex="0"
                 role="button"
-                className="btn btn-ghost btn-circle mr-8 lg:flex  hidden items-center justify-center"
+                className="btn btn-ghost btn-circle mr-4 lg:flex hidden items-center justify-center"
               >
                 <div className="indicator">
                   <Icon
                     icon="solar:cart-check-outline"
-                    className="size-8 text-white cursor-pointer hover:text-yellow-500 duration-100 transition-all ease-in-out"
+                    className="text-4xl text-white cursor-pointer hover:text-yellow-500 duration-100 transition-all ease-in-out"
                   />
                   <span className="badge badge-sm bg-yellow border-none indicator-item">
                     {cart.length}
@@ -182,7 +212,8 @@ const Navbar = () => {
           ) : (
             <button
               onClick={() => document.getElementById("my_modal_5").showModal()}
-              className="btn px-5 text-black flex items-center gap-2 mr-12"
+              className="btn px-5 text-white bg-yellow hover:bg-yellow-600 transition-all duration-200 ease-in-out mr-4 ml-8 border-none 
+               md:btn-xl"
             >
               Login
             </button>
@@ -190,6 +221,27 @@ const Navbar = () => {
 
           <Modal />
         </div>
+      </div>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 backdrop-blur-xl transition-all duration-500 ease-in-out z-400 ${
+          showSidebar ? "visible" : "invisible"
+        }`}
+        onClick={() => setShowSidebar(false)}
+      ></div>
+      <div
+        className={`fixed top-0 left-0 h-screen w-64 bg-red-500 text-white p-8 transition-all duration-300 ease-in-out z-50 ${
+          showSidebar ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <button
+          onClick={() => setShowSidebar(false)}
+          className="btn btn-ghost btn-circle absolute top-4 right-4"
+        >
+          <Icon icon="ic:baseline-close" className="text-2xl " />
+        </button>
+        <ul className="mt-16">{navItems}</ul>
       </div>
     </header>
   );
