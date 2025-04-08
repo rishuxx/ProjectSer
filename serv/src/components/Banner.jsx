@@ -9,18 +9,12 @@ import LocationInput from "../location/LocationInput";
 
 const HomeContainer = () => {
   const [currentImage, setCurrentImage] = useState(0);
-  const heroImages = [
-    heroImage,
-    heroImage2,
-    heroImage3,
-    heroImage4,
-    heroImage5,
-  ];
+  const heroImages = [heroImage, heroImage2];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 5000);
+    }, 20000);
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
