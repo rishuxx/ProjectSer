@@ -15,12 +15,10 @@ app.use(express.json());
 //mongoDB Config using mongoose
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@projectserventica.h06lv2i.mongodb.net/Serventica?retryWrites=true&w=majority&appName=ProjectServentica`
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@serventicawebsitedata20.srdolrj.mongodb.net/Serventica2025data?retryWrites=true&w=majority&appName=ServenticaWebsiteData2025`
   )
-  .then(console.log("MongoDB Connected Successfully"))
+  .then(() => console.log("MongoDB Connected Successfully"))
   .catch((error) => console.log("Error connecting to MongoDB", error));
-
-//jwt auth
 
 // jwt related api
 app.post("/jwt", async (req, res) => {
@@ -46,8 +44,8 @@ app.use("/users", userRoutes);
 app.use("/payments", paymentRoutes);
 app.use("/admin-stats", adminStats);
 app.use("/order-stats", orderStats);
-// stripe payment gateway
 
+// stripe payment gateway
 app.post("/create-payment-intent", async (req, res) => {
   const { price } = req.body;
   const amount = price * 100;
